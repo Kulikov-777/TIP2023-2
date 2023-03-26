@@ -1,35 +1,44 @@
+#include <ctime>
 #include <iostream>
 
-#include "cone.h"
+#include "ocean.h"
 
 using namespace std;
 
 int main() {
-  Cone c1(3, 7);  // Конус с центром в начале координат с радиусом 3 и выотой 7
-  Cone c2(1, 2, 3, 5, 10);  // Произвольный конус
+  setlocale(LC_ALL, "Russian");
 
-  cout << "Cone 1: " << c1;
-  cout << "Area: " << c1.area() << "\n";
-  cout << "Volume: " << c1.volume() << "\n";
+  srand(time(NULL));
 
-  cout << "Cone 2: " << c2;
-  cout << "Area: " << c2.area() << "\n";
-  cout << "Volume: " << c2.volume() << "\n";
+  Ocean f1, f2, f3, f4;
+  f1.addSea();
+  f1.addSea();
+  f1.seas[0].addGulf();
+  f1.seas[0].addGulf();
+  f1.seas[1].addGulf();
+  f1.seas[1].addGulf();
+  f1.seas[1].addGulf();
+  f3.addSea();
 
-  Frustum c3(5, 3, 6);
+  cout << f1 << "\n";
+  cout << f2 << "\n";
+  cout << f3 << "\n";
 
-  cout << "Cone 3: " << c3;
-  cout << "Area: " << c3.area() << endl;
-  cout << "Volume: " << c3.volume() << endl;
+  f4.addSea();
+  f4.seas[0].addGulf();
 
-  Frustum c4(6, 4, 7);
+  cout << "\nВведите данные океана (Название, глубина, размер):";
+  cin >> f4;
+  cout << "Введите данные моря (Название, глубина, размер):";
+  cin >> f4.seas[0];
+  cout << "Введите данные залива (Название, глубина, размер):";
+  cin >> f4.seas[0].Gulfs[0];
 
-  cout << "Cone 4: " << c4;
-  cout << "Area: " << c4.area() << endl;
-  cout << "Volume: " << c4.volume() << endl;
+  cout << "\n";
 
-  Frustum c5(6, 4, 7);
+  cout << f4;
 
-  cout << (c4.compare(c5) ? "Cones are equal" : "Cones are not equal");
+  cout << "\n";
+
   return 0;
 }
